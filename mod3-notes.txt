@@ -1,0 +1,19 @@
+Repo Setup
+Setting up a repo is very simple. Both Gitlab and Github have example commands to set up the local repos after being initialized on the platform. 
+The public SSH key needs to be added to the remote (Github in my case) in order to push commits without username and pw
+If you have multiple keys you can configure your terminal so it knows which keys to use for which resources. i.e. I have separate keys for SSH-ing into boxes and one for Git
+
+git log -- shows commit history with commit hashes
+
+Branches
+branches are used to individual features so feature changes won't break other projects code
+the master/main branch should always be working/deployable
+git checkout -- changes the branch you are currently on, -b allows you to create a branch and then switches to it
+if pushing a new branch that is not made in the remote repo, you need to use --set-upstream to inform the remote repo about the new branch. git will give you command help if there's an issue.
+with continuous integration, the repo with have a master branch and individual branches for individual fixes/features. This is the more modern, devops way to set up branches.
+another way of setting up branches is to have a master and dev branches, then individual branches will be merged into dev, once that's good dev will be merged into master.
+merge/pull requests merge a branch into another branch. In different UIs you can request/require review from senior developers.
+to delete merged branches, use "git branch -d name" for the local repo and "git push origin --delete name" for the remote repo.
+to pull new changes and locally delete branches that have been deleted remotely, switch to a live branch and "git pull", or use "git fetch -p" which will fetch branches and tags and prune them, which will bring your local repo up to the remote repo.
+
+
